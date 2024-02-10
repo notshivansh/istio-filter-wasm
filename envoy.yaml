@@ -1,0 +1,13 @@
+apiVersion: extensions.istio.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  name: auth-wasm-plugin
+  namespace: default
+spec:
+  imagePullPolicy: Always
+  match:
+    - mode: CLIENT_AND_SERVER
+  selector:
+    matchLabels:
+      app: productpage
+  url: oci://docker.io/coastaldemigod/wasm-plugin:v15
